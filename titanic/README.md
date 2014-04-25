@@ -1,4 +1,4 @@
-#Данные "Покер"
+#Данные "Титаник"
 *Источник данных [Titanic](http://www.kaggle.com/c/titanic-gettingStarted/data)*
 
 ###Описание формата
