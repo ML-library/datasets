@@ -78,19 +78,20 @@ def make_list(df):
 	  [0, 0, 0, 1]]
 	  
     """
-    smth = []
-    for i in xrange(df.shape[1]):
-	bigger = (df.ix[:,i-1].map(lambda x: x > 0.1))
-	w_bigger = np.array(range(len(bigger)))
-	smth.append(list(w_bigger[bigger]))   
+    smth = [[] for i in xrange(0, df.shape[1])]
+    for i in xrange(df.shape[0]):
+        # it's like df[i] == 1
+        one = np.where(df[i] > 0.1)[0]
+        if len(one) == 1:
+            smth[one[0]].append(i + 1)
     return smth
  
 def calculate_f1(true_inputs, pred_inputs):
     """
     Reads csv's in the folder and computes mean F1 or just F1 if there's only two classes
     """
-    trues = pd.read_csv(true_inputs, header=None)
-    pred = pd.read_csv(pred_inputs, header=None)
+    trues = np.array(pd.read_csv(true_inputs, header=None), dtype=int)
+    pred = np.array(pd.read_csv(pred_inputs, header=None), dtype=int)
     tr_list = make_list(trues)
     pr_list = make_list(pred)
     
