@@ -89,8 +89,8 @@ def calculate_f1(true_inputs, pred_inputs):
     """
     Reads csv's in the folder and computes mean F1 or just F1 if there's only two classes
     """
-    trues = pd.read_csv(true_inputs)
-    pred = pd.read_csv(pred_inputs)
+    trues = pd.read_csv(true_inputs, header=None)
+    pred = pd.read_csv(pred_inputs, header=None)
     tr_list = make_list(trues)
     pr_list = make_list(pred)
     
