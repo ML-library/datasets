@@ -78,7 +78,8 @@ def make_list(df):
 	  [0, 0, 0, 1]]
 	  
     """
-    smth = [[] for i in xrange(0, df.shape[1])]
+    classes = df.shape[1] if len(df.shape) == 2 else 1
+    smth = [[] for i in xrange(0, classes)]
     for i in xrange(df.shape[0]):
         # it's like df[i] == 1
         one = np.where(df[i] > 0.1)[0]
